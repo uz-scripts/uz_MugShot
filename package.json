@@ -1,0 +1,10 @@
+{
+  "name": "uz_mugshot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node-side image processor for the uz_MugShot FiveM resource",
+  "main": "server/processor.js",
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
+}

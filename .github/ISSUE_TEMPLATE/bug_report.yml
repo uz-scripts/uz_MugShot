@@ -1,0 +1,77 @@
+name: Bug report
+description: Something does not work as described in the README
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Setup questions go to [Discord](https://discord.uz-scripts.com). Security problems go through [SECURITY.md](https://github.com/uz-scripts/uz_MugShot/blob/main/SECURITY.md), not here.
+
+  - type: checkboxes
+    attributes:
+      label: Before you open this
+      options:
+        - label: I am on the latest release
+          required: true
+        - label: The resource folder is named exactly `uz_MugShot`
+          required: true
+        - label: I searched the existing issues
+          required: true
+
+  - type: input
+    attributes:
+      label: uz_MugShot version
+      description: "`version` in fxmanifest.lua"
+      placeholder: 1.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Framework
+      options:
+        - Qbox
+        - QBCore
+        - ESX
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Appearance and weathersync scripts
+      placeholder: illenium-appearance 5.7.0, Renewed-Weathersync
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Server artifact build
+      placeholder: "12345"
+
+  - type: textarea
+    attributes:
+      label: What happened
+      description: And what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the clothing menu
+        2. Put on a hat, close the menu
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Logs
+      description: Server console and F8 output with `Config.Debug = true`.
+      render: text
+
+  - type: textarea
+    attributes:
+      label: Photos
+      description: For a bad photo, attach `mugshot.png` and `mugshot.raw.png` from `shots/{cid}/` (raw is kept with `Config.Debug = true`). Only attach photos you are allowed to share.

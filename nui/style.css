@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#curtain {
+    position: fixed;
+    inset: 0;
+    background: #000000;
+    transition: opacity 30ms ease-out;
+    pointer-events: none;
+    opacity: 1;
+}
+
+#curtain.hidden {
+    opacity: 0;
+}
+
+#curtain.no-spinner .spinner-container {
+    display: none;
+}
+
+.spinner-container {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    color: #ffffff;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 800ms linear infinite;
+    flex-shrink: 0;
+}
+
+.label {
+    user-select: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
