@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/mugshot-dark.gif">
-  <img alt="A tiny 128px GTA headshot gets crossed out. A camera flashes and a 512px transparent mugshot develops on a polaroid. The hat changes and a new photo follows." src=".github/assets/mugshot-light.gif" width="620">
+  <img alt="A pixelated 64px GTA headshot of a player in a beanie gets crossed out. A camera flashes and a 512px transparent mugshot of the same player develops in its place. The beanie becomes a cowboy hat and a new photo follows." src=".github/assets/mugshot-light.gif" width="620">
 </picture>
 
 # uz_MugShot
@@ -30,12 +30,19 @@ Taken in a chroma studio whenever a player's look changes, served to any script 
 
 ## Why not GTA's headshot?
 
-Most scripts get their photo from GTA's `RegisterPedheadshot`, directly or through [MugShotBase64](https://github.com/BaziForYou/MugShotBase64). This resource was built to replace that:
+Most scripts get their photo from GTA's `RegisterPedheadshot`, directly or through [MugShotBase64](https://github.com/BaziForYou/MugShotBase64). This resource was built to replace that.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/compare-dark.png">
+  <img alt="The same character four times at the same size: GTA's 64x64 headshot on black, the 128x128 hi-res headshot on black, the 128x128 transparent headshot with a dark haze and a white outline, and the 512x512 uz_MugShot photo." src=".github/assets/compare-light.png">
+</picture>
+
+<sub>The same character in game: `RegisterPedheadshot`, `RegisterPedheadshot_3` (hi-res) and `RegisterPedheadshotTransparent` as they come out of `nui-img`, next to uz_MugShot.</sub>
 
 | | Native headshot / MugShotBase64 | uz_MugShot |
 |---|---|---|
-| Size | 128×128, blurry once scaled up. MugShotBase64's transparent mode returns 64×64 | 512×512 |
-| Background | Black. MugShotBase64's transparent mode loads a body-pix model in NUI on every call and cuts a hard on/off mask. `RegisterPedheadshotTransparent` fails often ([citizenfx/fivem#2611](https://github.com/citizenfx/fivem/issues/2611)) | Chroma studio, keyed on the server with soft edges |
+| Size | 64×64 from `RegisterPedheadshot`, the one MugShotBase64 uses. The hi-res and transparent variants give 128×128 | 512×512 |
+| Background | Black. `RegisterPedheadshotTransparent` fails often ([citizenfx/fivem#2611](https://github.com/citizenfx/fivem/issues/2611)), and when it works it leaves a dark haze and a white outline. MugShotBase64's transparent mode loads a body-pix model in NUI on every call and cuts a hard on/off mask | Chroma studio, keyed on the server with soft edges |
 | Framing | A tight head crop you cannot change | Camera, lights and framing set in `config.lua`, the same on every photo |
 | When | Taken again on every call, waiting up to 2 seconds each time | Taken once when the look changes, served from disk after that |
 | Whose | Only peds that exist on the calling client | Any character by citizenid, offline too, from client or server |
@@ -266,7 +273,7 @@ local b64 = exports['uz_MugShot']:GetPhotoDataURI(ped)
 
 **What the compat export returns:**
 
-- Players with a stored photo get it scaled to `Config.Compat.size`, 128×128 by default. That is the size of GTA's headshot, and it keeps the string around 20 KB for scripts that save it in item metadata (the full photo is 160-270 KB). Set it to `512` for the full photo.
+- Players with a stored photo get it scaled to `Config.Compat.size`, 128×128 by default. That is twice the width of GTA's 64×64 headshot and keeps the string around 20 KB for scripts that save it in item metadata (the full photo is 160-270 KB, the original's headshot about 5 KB). Set it to `64` to match the original's size, or `512` for the full photo.
 - NPCs, preview peds and players not captured yet get GTA's native headshot, like the original. If that fails too, an empty string. Never `nil`.
 - The `transparent` flag is ignored. Stored photos are always transparent, the native fallback never is.
 
