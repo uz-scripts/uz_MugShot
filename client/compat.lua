@@ -1,7 +1,8 @@
--- Same native headshot MugShotBase64 uses, for peds we have no photo of.
+-- GTA's hi-res headshot (128x128, flat dark background) for peds we have no photo of.
+-- MugShotBase64 used RegisterPedheadshot, which is only 64x64.
 local function nativeHeadshot(ped)
     if not DoesEntityExist(ped) then return '' end
-    local handle = RegisterPedheadshot(ped)
+    local handle = RegisterPedheadshot_3(ped)
     local waited = 0
     while not (IsPedheadshotReady(handle) and IsPedheadshotValid(handle)) and waited < 2000 do
         Wait(10)

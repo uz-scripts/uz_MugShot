@@ -274,7 +274,7 @@ local b64 = exports['uz_MugShot']:GetPhotoDataURI(ped)
 **What the compat export returns:**
 
 - Players with a stored photo get it scaled to `Config.Compat.size`, 128×128 by default. That is twice the width of GTA's 64×64 headshot and keeps the string around 20 KB for scripts that save it in item metadata (the full photo is 160-270 KB, the original's headshot about 5 KB). Set it to `64` to match the original's size, or `512` for the full photo.
-- NPCs, preview peds and players not captured yet get GTA's native headshot, like the original. If that fails too, an empty string. Never `nil`.
+- NPCs, preview peds and players not captured yet get GTA's hi-res native headshot, 128×128 on a flat dark background (the original used the 64×64 one). If that fails too, an empty string. Never `nil`.
 - The `transparent` flag is ignored. Stored photos are always transparent, the native fallback never is.
 
 ## Troubleshooting

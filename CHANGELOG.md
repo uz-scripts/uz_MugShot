@@ -2,6 +2,11 @@
 
 Notable changes to uz_MugShot. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-10-25
+
+- `GetMugShotBase64` falls back to GTA's hi-res headshot (128×128) instead of the 64×64 one, so NPCs match the default size of stored photos
+- README: GTA's headshot is 64×64, not 128×128 as 1.0.0 said. The header GIF and a new comparison use real in-game captures
+
 ## [1.0.0] - 2026-10-25
 
 First public release.
@@ -17,4 +22,5 @@ First public release.
 - Update notice in the server console when a newer GitHub release is out
 - Qbox, QBCore and ESX bridges with auto-detection
 
+[1.0.1]: https://github.com/uz-scripts/uz_MugShot/releases/tag/v1.0.1
 [1.0.0]: https://github.com/uz-scripts/uz_MugShot/releases/tag/v1.0.0

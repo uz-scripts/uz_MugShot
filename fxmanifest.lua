@@ -4,7 +4,7 @@ game 'gta5'
 name 'uz_MugShot'
 author 'UZ'
 description 'Automatic transparent player mugshots for FiveM'
-version '1.0.0'
+version '1.0.1'
 repository 'https://github.com/uz-scripts/uz_MugShot'
 
 -- Drop-in replacement: exports['MugShotBase64']:GetMugShotBase64(...) keeps working
